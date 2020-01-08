@@ -1,0 +1,105 @@
+﻿@{
+    ViewData["Title"] = "Subscribe to News Feed";
+}
+
+<br />
+<h2>Subscribe to your favorite News Feed</h2>
+<hr />
+<br />
+
+
+<ul class="nav nav-tabs">
+    @if (ViewBag.Categories != null)
+    {
+        int i = 0;
+        foreach (var item in ViewBag.Categories)
+        {
+
+            if (i == 0)
+            {
+                <li class="active"><a data-toggle="tab" href="#@("Category"+item.categoryId)">@item.categoryName</a></li>
+            }
+            else
+            {
+                <li><a data-toggle="tab" href="#@("Category"+item.categoryId)">@item.categoryName</a></li>
+            }
+            i++;
+        }
+    }
+</ul>
+
+<div class="tab-content">
+    @if (ViewBag.Categories != null)
+    {
+        int x = 0;
+        foreach (var item in ViewBag.Categories)
+        {
+            string classValue = "tab-pane fade";
+            if (x == 0)
+            {
+                classValue = "tab-pane fade in active";
+            }
+
+            <div id="@("Category"+item.categoryId)" class="@classValue">
+                <h3>@item.categoryName</h3>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>News Feed</th>
+                            <th>About site</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (item.feeds != null)
+                        {
+                            foreach (var feed in item.feeds)
+                            {
+                                <tr>
+                                    <td>@feed.FeedTitle</td>
+                                    <td>@feed.FeedDescription</td>
+                                    <td>
+
+                                        @if (feed.subscribed)
+                                        {
+                                            using (Html.BeginForm("Delete", "Home", new { Id = feed.FeedId }, FormMethod.Post))
+                                            {
+                                                <button type="submit" class="btn btn-danger">Unsubscribe</button>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            using (Html.BeginForm("Add", "Home", new { Id = feed.FeedId }, FormMethod.Post))
+                                            {
+                                                <button type="submit" class="btn btn-success">Subscribe</button>
+                                            }
+                                        }
+
+
+                                    </td>
+                                </tr>
+
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+            x++;
+        }
+    }
+</div>
+
+
+<h3>Not in the list? Subscribe to your favorite News Feed by entering its URL here</h3>
+
+@using (Html.BeginForm("Add", "Home", new { Id = 0 }, FormMethod.Post))
+{
+    <input type="URL" name="feedURL" placeholder="Enter you News Feed URL Here..." class="form-control" style="min-width:100%" required/>
+    <br />
+    <button type="submit" class="btn btn-success">Subscribe</button>
+}
+
+
+
+
+

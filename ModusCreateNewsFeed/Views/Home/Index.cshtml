@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "BryanGonzalezNewsFeedApp";
+}
+
+<br />
+<h2>News Feed App</h2>
+<hr />
+<br />
+
+
+@using (Html.BeginForm("Index", "Home", new { searchString = 0 }, FormMethod.Post))
+{
+    <fieldset>
+        <p>
+            <div class="form-group">
+                <label for ="selectedCategoryId">Category</label>
+                <select class="form-control" id="selectedCategoryId" name="selectedCategoryId">
+                    <option value="0">All</option>
+                    @foreach (var item in ViewBag.Categories)
+                    {
+
+                        if (item.categoryId.Equals(ViewBag.selectedCategoryId))
+                        {
+                            <option selected="selected" value="@item.categoryId">@item.categoryName</option>
+                        }
+                        else
+                        {
+                            <option value="@item.categoryId">@item.categoryName</option>
+                        }
+
+                    }
+                </select>
+            </div>
+        </p>
+    </fieldset>
+
+    <input type="text" name="searchString" placeholder="Search..." class="form-control" style="min-width:80%" value="@ViewBag.Search"/>
+    <br />
+    <button type="submit" class="btn btn-success" style="min-width:20%">Search</button>
+    <br />
+    <br />
+}
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Title</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (ViewBag.RSSFeed != null)
+        {
+            foreach (var item in ViewBag.RSSFeed)
+            {
+                <tr>
+                    <td>@item.Date</td>
+                    <td><a href="@item.URL">@item.Title...</a></td>
+                    <td>@Html.Raw(item.Description)</td>
+                </tr>
+
+            }
+        }
+    </tbody>
+</table>  
