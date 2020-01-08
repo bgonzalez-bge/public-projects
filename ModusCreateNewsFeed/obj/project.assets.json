@@ -11880,17 +11880,21 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bgonzalez\\.nuget\\packages\\": {}
+    "C:\\Users\\bgonzalez\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bgonzalez\\source\\repos\\public-projects\\ModusCreateNewsFeed\\ModusCreateNewsFeed.csproj",
+      "projectUniqueName": "C:\\Users\\bgonzalez\\Desktop\\ModusCreateTest\\ModusCreateNewsFeed\\ModusCreateNewsFeed.csproj",
       "projectName": "ModusCreateNewsFeed",
-      "projectPath": "C:\\Users\\bgonzalez\\source\\repos\\public-projects\\ModusCreateNewsFeed\\ModusCreateNewsFeed.csproj",
+      "projectPath": "C:\\Users\\bgonzalez\\Desktop\\ModusCreateTest\\ModusCreateNewsFeed\\ModusCreateNewsFeed.csproj",
       "packagesPath": "C:\\Users\\bgonzalez\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bgonzalez\\source\\repos\\public-projects\\ModusCreateNewsFeed\\obj\\",
+      "outputPath": "C:\\Users\\bgonzalez\\Desktop\\ModusCreateTest\\ModusCreateNewsFeed\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "C:\\Users\\bgonzalez\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -11928,23 +11932,16 @@
             "version": "[2.1.2, )"
           },
           "Microsoft.NETCore.App": {
-            "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true
           }
         },
         "imports": [
-          "net461",
-          "net462",
-          "net47",
-          "net471",
-          "net472",
-          "net48"
+          "net461"
         ],
         "assetTargetFallback": true,
-        "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        "warn": true
       }
     }
   }

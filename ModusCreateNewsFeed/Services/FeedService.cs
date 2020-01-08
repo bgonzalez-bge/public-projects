@@ -52,7 +52,7 @@ namespace ModusCreateNewsFeed.Services
                                                Date = ((DateTime)x.Element("pubDate"))
                                            }).ToList()) ;
                 }
-                catch(Exception ex)
+                catch
                 {
 
                 }
